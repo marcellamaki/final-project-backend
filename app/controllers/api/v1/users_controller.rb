@@ -1,16 +1,21 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :authorized, only: [:me]
 
   def index
-    users = User.all
-    render json: users
+    @users = User.all
+    render json: @users
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(username: params[:username], password:params[:password])
+      payload = { user_id: @user.id}
+      render json: {user: @user, jwt: issue_token(payload)}
   end
 
-  def user_params
-    params.require(:data).permit(:username, :password_digest, :email, :phone_number)
+
+  def me
+    render json: current_user
   end
+
 
 end
