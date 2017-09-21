@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-
   namespace :api do
    namespace :v1 do
-     resources :users
-     resources :questions
-     resources :reminders
-     resources :reminder_times
+     resources :users, only: [:index, :create, :destroy]
+     resources :questions, only: [:index, :create, :destroy]
+     resources :reminders, only: [:index, :create, :destroy]
+     resources :reminder_times, only: [:index, :create, :destroy]
+
+     post '/users', to: 'users#create'
+
    end
  end
 
