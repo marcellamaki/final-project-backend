@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
-
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  
   def issue_token(payload)
       JWT.encode(payload, "luna")
     end
@@ -37,8 +38,8 @@ class ApplicationController < ActionController::API
     end
 
 
-    def authorized
-      redirect_to '/api/v1/login' unless logged_in?
-    end
+    # def authorized
+    #   redirect_to '/api/v1/login' unless logged_in?
+    # end
 
 end
