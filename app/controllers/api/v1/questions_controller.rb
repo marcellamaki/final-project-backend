@@ -1,7 +1,9 @@
 class Api::V1::QuestionsController < ApplicationController
 
     def index
-      questions = Question.all
+      user = User.find(params[:id])
+      questions = user.questions
+      
       render json: questions
     end
 
@@ -11,7 +13,7 @@ class Api::V1::QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:data).permit(:text)
+      params.require(:data).permit(:text, :user_id)
     end
 
   end

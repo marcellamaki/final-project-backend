@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
      post '/users/new', to: 'users#create'
      post '/login', to: 'users#authenticate'
+     get '/questions/:id', to: 'questions#index'
 
    end
  end
