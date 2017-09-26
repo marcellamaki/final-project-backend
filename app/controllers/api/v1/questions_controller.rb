@@ -7,10 +7,11 @@ class Api::V1::QuestionsController < ApplicationController
 
     def create
       question = Question.create(question_params)
+      render json: question
     end
 
     def question_params
-      params.require(:data).permit(:user_id, :text)
+      params.require(:data).permit(:text)
     end
 
   end

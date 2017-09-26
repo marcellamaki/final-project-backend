@@ -6,7 +6,8 @@ Rails.application.routes.draw do
      resources :reminders, only: [:index, :create, :destroy]
      resources :reminder_times, only: [:index, :create, :destroy]
 
-     post '/users', to: 'users#create'
+     post '/users/new', to: 'users#create'
+     post '/login', to: 'users#authenticate'
 
    end
  end
