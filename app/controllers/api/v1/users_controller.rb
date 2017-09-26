@@ -17,13 +17,16 @@ class Api::V1::UsersController < ApplicationController
   end
 
     def authenticate
-      user = User.find_by(params[:username])
+      @user = User.find_by(username: params[:data][:username])
 
-        payload = { user_id: user.id}
-        token = issue_token(payload)
-        render json: {user: user, jwt: token}
-
-    end
+      if @user && @user.authenticate(params[:data][:password])
+       payload = { user_id: @user.id}
+       token = issue_token(payload)
+       render json: {user: @user, jwt: token}
+     else
+       render json: {error: "User Does Not Exist"}
+     end
+  end
 
   def user_params
    params.require(:data).permit(:username, :password, :email, :phone_number)
