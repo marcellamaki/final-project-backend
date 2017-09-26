@@ -6,13 +6,12 @@ class Api::V1::RemindersController < ApplicationController
     end
 
     def create
-      byebug
       reminder = Reminder.create(reminder_params)
       render json: reminder
     end
 
     def reminder_params
-      params.require(:data).permit(:question_id, :answer, :active, :reminder, :reminder_time)
+      params.require(:data).permit(:question_id, :active, :message)
     end
 
   end
