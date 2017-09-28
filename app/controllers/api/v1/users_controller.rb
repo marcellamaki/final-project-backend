@@ -1,5 +1,4 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: [:me]
 
   def index
     @users = User.all
@@ -9,7 +8,8 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
       payload = { user_id: @user.id}
-      render json: {user: @user}
+      token = issue_token(payload)
+      render json: {user: @user, jwt: token}
   end
 
   def me
@@ -27,6 +27,16 @@ class Api::V1::UsersController < ApplicationController
        render json: {error: "User Does Not Exist"}
      end
   end
+
+  def get_user
+    if current_user
+        
+        render json: current_user
+      else
+        render json: {failure: "Error"}
+      end
+    end
+
 
   def user_params
    params.require(:data).permit(:username, :password, :email, :phone_number)

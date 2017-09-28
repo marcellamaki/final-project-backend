@@ -1,17 +1,12 @@
 class ApplicationController < ActionController::API
-  include ActionController::HttpAuthentication::Token::ControllerMethods
 
   def issue_token(payload)
-      JWT.encode(payload, "luna")
+      JWT.encode(payload, 'secret')
     end
 
 
     def decoded_token(token)
-      begin
-        JWT.decode(token, "luna") # Returns [{}, {}, {}]
-      rescue JWT::DecodeError
-        []
-      end
+        JWT.decode(token, 'secret', true, { :algorithm => 'HS256' })
     end
 
     def token
@@ -35,11 +30,6 @@ class ApplicationController < ActionController::API
 
     def logged_in?
       !!current_user
-    end
-
-
-    def authorized
-      redirect_to '/api/v1/login' unless logged_in?
     end
 
 end

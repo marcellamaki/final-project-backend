@@ -3,7 +3,7 @@ class Api::V1::QuestionsController < ApplicationController
     def index
       user = User.find(params[:id])
       questions = user.questions
-      
+
       render json: questions
     end
 
