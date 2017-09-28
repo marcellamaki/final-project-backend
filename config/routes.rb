@@ -11,6 +11,7 @@ Rails.application.routes.draw do
      post '/login', to: 'users#authenticate'
      get '/questions', to: 'questions#index'
      get '/getUser', to: 'users#get_user'
+     post '/users/:id/questions', to: 'questions#index'
 
    end
  end

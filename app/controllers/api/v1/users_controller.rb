@@ -30,8 +30,7 @@ class Api::V1::UsersController < ApplicationController
 
   def get_user
     if current_user
-        
-        render json: current_user
+        render json: {user: current_user, questions:current_user.questions, reminders: current_user.reminders}
       else
         render json: {failure: "Error"}
       end
