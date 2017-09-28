@@ -12,6 +12,7 @@ Rails.application.routes.draw do
      get '/questions', to: 'questions#index'
      get '/getUser', to: 'users#get_user'
      post '/users/:id/questions', to: 'questions#index'
+     post '/checkin', to: 'users#checkin'
 
    end
  end

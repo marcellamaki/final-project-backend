@@ -36,9 +36,18 @@ class Api::V1::UsersController < ApplicationController
       end
     end
 
+    def checkin
+      reminders =  params[:data].map{ |i| Question.find(i).reminders}
+      byebug
+      render json: current_user
+
+    end
+
+
+private
 
   def user_params
-   params.require(:data).permit(:username, :password, :email, :phone_number)
+   params.require(:data).permit(:username, :password, :email, :phone_number, :responses)
   end
 
 
