@@ -11,7 +11,7 @@ class Api::V1::RemindersController < ApplicationController
     end
 
     def reminder_params
-      params.require(:data).permit(:question_id, :active, :message)
+      params.require(:data).permit(:question_id, :active, :message, :time)
     end
 
   end

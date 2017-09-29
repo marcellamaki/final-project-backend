@@ -4,7 +4,8 @@ Rails.application.routes.draw do
      resources :users, only: [:index, :create, :destroy]
      resources :questions, only: [:index, :create, :destroy]
      resources :reminders, only: [:index, :create, :destroy]
-     resources :reminder_times, only: [:index, :create, :destroy]
+     resources :checkins, only: [:index, :create, :destroy]
+
 
      post '/users/new', to: 'users#create'
      post '/login', to: 'users#authenticate'
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
      get '/questions', to: 'questions#index'
      get '/getUser', to: 'users#get_user'
      post '/users/:id/questions', to: 'questions#index'
-     post '/checkin', to: 'users#set_checkin_reminders'
+     post '/checkin', to: 'checkins#create'
 
    end
  end

@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920152429) do
+ActiveRecord::Schema.define(version: 20170929160249) do
+
+  create_table "checkins", force: :cascade do |t|
+    t.integer "reminder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.integer "user_id"
