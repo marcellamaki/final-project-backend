@@ -4,6 +4,7 @@ class CreateReminders < ActiveRecord::Migration[5.1]
       t.integer :question_id
       t.string :message
       t.boolean :active
+      t.string :time
 
       t.timestamps
     end

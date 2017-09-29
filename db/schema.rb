@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920152437) do
+ActiveRecord::Schema.define(version: 20170920152429) do
 
   create_table "questions", force: :cascade do |t|
     t.integer "user_id"
@@ -19,17 +19,11 @@ ActiveRecord::Schema.define(version: 20170920152437) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reminder_times", force: :cascade do |t|
-    t.integer "reminder_id"
-    t.datetime "time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reminders", force: :cascade do |t|
     t.integer "question_id"
     t.string "message"
     t.boolean "active"
+    t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

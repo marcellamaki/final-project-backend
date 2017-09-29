@@ -12,7 +12,7 @@ Rails.application.routes.draw do
      get '/questions', to: 'questions#index'
      get '/getUser', to: 'users#get_user'
      post '/users/:id/questions', to: 'questions#index'
-     post '/checkin', to: 'users#checkin'
+     post '/checkin', to: 'users#set_checkin_reminders'
 
    end
  end

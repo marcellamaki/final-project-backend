@@ -36,10 +36,12 @@ class Api::V1::UsersController < ApplicationController
       end
     end
 
-    def checkin
-      reminders =  params[:data].map{ |i| Question.find(i).reminders}
+    def set_checkin_reminders
+      user = User.find(params[:data].last)
+      reminders =  params[:data]
       byebug
-      render json: current_user
+
+      render json: messages
 
     end
 
