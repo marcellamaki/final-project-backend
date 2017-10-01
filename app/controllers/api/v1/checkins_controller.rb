@@ -19,7 +19,6 @@ class Api::V1::CheckinsController < ApplicationController
         # byebug
         phone_number = user.phone_number
         message = message
-        twilio_number =
 
 
     end
