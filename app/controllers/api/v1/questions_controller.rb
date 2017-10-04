@@ -13,6 +13,13 @@ class Api::V1::QuestionsController < ApplicationController
       render json: question
     end
 
+    def destroy
+      question = Question.find(params[:id])
+      question.destroy
+      questions = Question.all
+      render json: questions
+    end
+
     def question_params
       params.require(:data).permit(:text, :user_id, :question_id)
     end

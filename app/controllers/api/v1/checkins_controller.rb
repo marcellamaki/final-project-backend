@@ -8,16 +8,16 @@ class Api::V1::CheckinsController < ApplicationController
     end
 
     def create
-
+      # byebug
       user = User.find(params[:data].last)
 
       reminders =  params[:data]
       reminders.pop
       # message_text = reminders.map{ |i| Question.find(i).reminders }.as_json.flatten.map{ |i| i["message"]}
       remindersArray = reminders.map{ |i| Question.find(i).reminders }.flatten
-      byebug
       remindersArray.each do |reminder|
         Appointment.create(time: reminder.time, user:user, message: reminder.message)
+
       end
       # message_text.each do |text|
       #   # data = Reminder.find
@@ -28,6 +28,7 @@ class Api::V1::CheckinsController < ApplicationController
       #
       #   # send_message(user, text)
       # end
+      render json: "testing"
     end
 
   #   def send_message(user, text)

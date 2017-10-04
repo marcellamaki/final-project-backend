@@ -5,6 +5,7 @@ Rails.application.routes.draw do
      resources :questions, only: [:index, :create, :destroy]
      resources :reminders, only: [:index, :create, :destroy]
      resources :checkins, only: [:index, :create, :destroy]
+     resources :appointments, only: [:index, :create, :destroy]
 
 
      post '/users/new', to: 'users#create'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
      get '/getUser', to: 'users#get_user'
      post '/users/:id/questions', to: 'questions#index'
      post '/checkin', to: 'checkins#create'
+     delete '/questions/:id', to: 'questions#destroy'
 
    end
  end
