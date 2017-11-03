@@ -8,7 +8,6 @@ class Api::V1::QuestionsController < ApplicationController
     end
 
     def create
-      byebug
       question = Question.create(question_params)
       render json: question
     end
