@@ -4,4 +4,7 @@ class User < ApplicationRecord
   has_many :reminders, through: :questions
   has_many :checkins, through: :reminders
 
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
+
 end
